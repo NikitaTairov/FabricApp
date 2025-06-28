@@ -18,6 +18,7 @@
                     <StackPanel Orientation="Horizontal">
                         <Button Content="Добавить" Click="AddDelivery_Click"/>
                         <Button Content="Обновить" Click="RefreshDeliveries_Click" />
+                        <Button Content="Удалить" Click="DeleteDelivery_Click" />
                     </StackPanel>
                     <DataGrid x:Name="DeliveriesGrid" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False">
                         <DataGrid.Columns>
@@ -40,6 +41,7 @@
                     <StackPanel Orientation="Horizontal">
                         <Button Content="Добавить модель" Click="AddModel_Click" />
                         <Button Content="Обновить" Click="RefreshModels_Click" />
+                        <Button Content="Удалить" Click="DeleteModel_Click" />
                     </StackPanel>
                     <DataGrid x:Name="ModelsGrid" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False">
                         <DataGrid.Columns>
@@ -61,6 +63,7 @@
                     <StackPanel Orientation="Horizontal">
                         <Button Content="Добавить вид" Click="AddType_Click" />
                         <Button Content="Обновить" Click="RefreshTypes_Click" />
+                        <Button Content="Удалить" Click="DeleteType_Click" />
                     </StackPanel>
                     <DataGrid x:Name="TypesGrid" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False">
                         <DataGrid.Columns>

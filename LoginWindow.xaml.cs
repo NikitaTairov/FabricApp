@@ -1,22 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using System.Data.SqlClient;
 
 namespace FabricApp
 {
-    /// <summary>
-    /// Логика взаимодействия для LoginWindow.xaml
-    /// </summary>
     public partial class LoginWindow : Window
     {
         public LoginWindow()
@@ -26,7 +14,30 @@ namespace FabricApp
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
+            string login = LoginBox.Text.Trim();
+            string password = PasswordBox.Password.Trim();
 
+            string query = "SELECT * FROM Users WHERE Login = @login AND Password = @password";
+            SqlParameter[] parameters =
+            {
+                new SqlParameter("@login", login),
+                new SqlParameter("@password", password)
+            };
+
+            DataTable user = DB.ExecuteQuery(query, parameters);
+
+            if (user.Rows.Count == 1)
+            {
+                string role = user.Rows[0]["Role"].ToString();
+
+                MainWindow mainWindow = new MainWindow(role);
+                mainWindow.Show();
+                this.Close();
+            }
+            else
+            {
+                StatusBlock.Text = "Неверный логин или пароль.";
+            }
         }
     }
 }
