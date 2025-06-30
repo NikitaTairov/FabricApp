@@ -7,7 +7,7 @@ namespace FabricApp
 {
     public static class DB
     {
-        // Укажи своё подключение к SQL Server
+        
         private static readonly string connectionString =
             "Server=DESKTOP-63KGBFH\\SQLEXPRESS;Database=FabricWarehouse;Trusted_Connection=True";
 
